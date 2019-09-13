@@ -114,7 +114,21 @@ namespace Laboratorio_4_OOP_201902
                 2.3- Agregue la nueva carta a la mano
             Elimine la carta del mazo.
             Hint: Utilice los métodos ya creados en Hand y Deck (AddCard y DestroyCard), no se preocupe de la implementacion de estos aun.*/
-            throw new NotImplementedException();
+            if (deck.Cards[cardID].Type == "CombatCard")
+            {
+                CombatCard aux = new CombatCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect, deck.Cards[cardID].AttackPoints, deck.Cards[cardID].Hero);
+                Hand.AddCard(aux);
+                deck.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
+                
+            }
+            else
+            {
+                SpecialCard aux = new SpecialCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect);
+                aux.BuffType = deck.Cards[cardId].BuffType;
+                Hand.AddCard(aux);
+                deck.DestroyCard(cardID);
+            }
+            
         }
         public void PlayCard(int cardId, EnumType buffRow = EnumType.None)
         {

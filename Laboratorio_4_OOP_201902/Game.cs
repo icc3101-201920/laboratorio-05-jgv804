@@ -155,5 +155,7 @@ namespace Laboratorio_4_OOP_201902
                 captains.Add(new SpecialCard(cardDetails[1], (EnumType)Enum.Parse(typeof(EnumType), cardDetails[2]), cardDetails[3]));
             }
         }
+
+       
     }
 }
