@@ -32,7 +32,26 @@ namespace Laboratorio_4_OOP_201902
         public void Shuffle()
         {
             //Reordenar el mazo de manera aleatoria (barajar).
-            throw new NotImplementedException();
+            int rand = new Random();
+            while (this.Cards.Length>0)
+            {
+                List<Card> deku = new List<Card>();
+                int rando = rand.Next(this.Cards.Length);
+                if(this.Cards[rando].GetType().Name == nameof(CombatCard))
+                {
+                   CombatCard aux = new CombatCard(this.Cards[rando].Name, this.Cards[rando].Type, this.Cards[rando].Effect,this.Cards[rando].Attackpoints, this.Cards[rando].Hero);
+                   deku.AddCard(aux);
+                }
+                else
+                {
+                    SpecialCard aux = new SpecialCard(this.Cards[rando].Name, this.Cards[rando].Type, this.Cards[rando].Effect);
+                    aux.BuffType = this.Cards[rando].BuffType;
+                    deku.AddCard(aux);
+                }
+                this.Cards = deku;
+                
+
+            }
         }
     }
 }
