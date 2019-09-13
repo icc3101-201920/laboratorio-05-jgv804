@@ -42,19 +42,20 @@ namespace Laboratorio_4_OOP_201902
                 {
                    CombatCard aux = new CombatCard(this.Cards[rando].Name, this.Cards[rando].Type, this.Cards[rando].Effect,this.Cards[rando].Attackpoints, this.Cards[rando].Hero);
                    deku.Add(aux);
-                   this.DestroyCard(rando)
+                   this.DestroyCard(rando);
                 }
                 else
                 {
                     SpecialCard aux = new SpecialCard(this.Cards[rando].Name, this.Cards[rando].Type, this.Cards[rando].Effect);
                     aux.BuffType = this.Cards[rando].BuffType;
                     deku.Add(aux);
-                    this.DestroyCard(rando)
+                    this.DestroyCard(rando);
                 }
-                this.Cards = deku;
+                
                 
 
             }
+            this.Cards = deku;
         }
     }
 }
