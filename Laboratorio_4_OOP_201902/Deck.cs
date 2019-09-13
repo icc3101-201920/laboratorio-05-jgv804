@@ -20,7 +20,7 @@ namespace Laboratorio_4_OOP_201902
         public void AddCard(Card card)
         {
             //Agregue la carta card a la lista cards
-            throw new NotImplementedException();
+            this.Cards.Add(card);
         }
         public void DestroyCard(int cardId)
         {
