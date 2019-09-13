@@ -217,7 +217,13 @@ namespace Laboratorio_4_OOP_201902
             /*Debe obtener 10 cartas aleatorias del mazo y asignarlas a la mano.
             Utilice el metodo DrawCard con 10 numeros de id aleatorios.
             */
-            throw new NotImplementedException();
+            int rand = new Random();
+            for(int k = 0; k < 10; k++)
+            {
+                int rando = rand.Next(deck.Cards.Length);
+                this.DrawCard(rando);
+            }
+
         }
 
         public void ChooseCaptainCard(SpecialCard captainCard)
