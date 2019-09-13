@@ -27,7 +27,7 @@ namespace Laboratorio_4_OOP_201902
             /* Debe eliminar la carta segun el parametro cardId. Para esto
                 1- Utilice el metodo RemoveAt de las listas para eliminar la carta en cards
             */
-            throw new NotImplementedException();
+            this.Cards.RemoveAt(cardID);
         }
         public void Shuffle()
         {
