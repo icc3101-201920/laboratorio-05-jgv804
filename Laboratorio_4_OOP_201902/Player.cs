@@ -114,19 +114,19 @@ namespace Laboratorio_4_OOP_201902
                 2.3- Agregue la nueva carta a la mano
             Elimine la carta del mazo.
             Hint: Utilice los métodos ya creados en Hand y Deck (AddCard y DestroyCard), no se preocupe de la implementacion de estos aun.*/
-            if (Deck.Cards[cardID].GetType().Name == nameof(CombatCard))
+            if (deck.Cards[cardID].GetType().Name == nameof(CombatCard))
             {
-                CombatCard aux = new CombatCard(Deck.Cards[cardID].Name, Deck.Cards[cardID].Type, Deck.Cards[cardID].effect, Deck.Cards[cardID].AttackPoints, Deck.Cards[cardID].Hero);
-                Hand.AddCard(aux);
-                Deck.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
+                CombatCard aux = new CombatCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect, deck.Cards[cardID].AttackPoints, deck.Cards[cardID].Hero);
+                hand.AddCard(aux);
+                deck.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
                 
             }
             else
             {
-                SpecialCard aux = new SpecialCard(Deck.Cards[cardID].Name, Deck.Cards[cardID].Type, Deck.Cards[cardID].effect);
-                aux.BuffType = Deck.Cards[cardId].BuffType;
-                Hand.AddCard(aux);
-                Deck.DestroyCard(cardID);
+                SpecialCard aux = new SpecialCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect);
+                aux.BuffType = deck.Cards[cardId].BuffType;
+                hand.AddCard(aux);
+                deck.DestroyCard(cardID);
             }
             
         }
@@ -144,26 +144,26 @@ namespace Laboratorio_4_OOP_201902
                         -El metodo AddCard solo requiere la carta.
                 3- Elimine la carta de la mano. 
              */
-            if (Deck.Cards[cardID].GetType().Name == nameof(CombatCard))
+            if (hand.Cards[cardID].GetType().Name == nameof(CombatCard))
             {
-                CombatCard aux = new CombatCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect, deck.Cards[cardID].AttackPoints, deck.Cards[cardID].Hero);
-                Board.AddCard(aux,Id);
-                Hand.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
+                CombatCard aux = new CombatCard(hand.Cards[cardID].Name, hand.Cards[cardID].Type, hand.Cards[cardID].effect, hand.Cards[cardID].AttackPoints, hand.Cards[cardID].Hero);
+                board.AddCard(aux,id);
+                hand.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
 
             }
             else
             {
-                SpecialCard aux = new SpecialCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect);
+                SpecialCard aux = new SpecialCard(hand.Cards[cardID].Name, hand.Cards[cardID].Type, hand.Cards[cardID].effect);
                 if (aux.Type == "weather")
                 {
-                    Board.AddCard(aux,Id);
-                    Hand.DestroyCard(cardID);
+                    board.AddCard(aux,id);
+                    hand.DestroyCard(cardID);
                 }
                 else
                 {
-                    aux.BuffType = deck.Cards[cardId].BuffType;
-                    Board.AddCard(aux,Id);
-                    Hand.DestroyCard(cardID);
+                    aux.BuffType = hand.Cards[cardId].BuffType;
+                    board.AddCard(aux,Id);
+                    hand.DestroyCard(cardID);
                 }
                
             }
@@ -181,7 +181,35 @@ namespace Laboratorio_4_OOP_201902
                 6- Elimine la carta aleatoria escogida del mazo.
                 7- Agregue la carta original de la mano al mazo.
             */
-            throw new NotImplementedException();
+            if (hand.Cards[cardID].GetType().Name == nameof(CombatCard))
+            {
+                /*CombatCard aux2 = new CombatCard();
+                aux2 = hand.Cards[cardID];*/
+                CombatCard aux = new CombatCard(hand.Cards[cardID].Name, hand.Cards[cardID].Type, hand.Cards[cardID].effect, hand.Cards[cardID].AttackPoints, hand.Cards[cardID].Hero);
+                hand.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
+                int rand = new Random();
+                int rando = rand.Next(deck.Cards.Length);
+                this.DrawCard(rando);
+                deck.DestroyCard(rando);
+                deck.AddCard(aux);
+
+            }
+            else
+            {
+                SpecialCard aux = new SpecialCard(deck.Cards[cardID].Name, deck.Cards[cardID].Type, deck.Cards[cardID].effect);
+                aux.BuffType = deck.Cards[cardId].BuffType;
+                
+                
+               
+                hand.DestroyCard(cardID); //supuestamente esto no deberia borrarlo como objeto de la memoria//
+                int rand = new Random();
+                int rando = rand.Next(deck.Cards.Length);
+                this.DrawCard(rando);
+                deck.DestroyCard(rando);
+                deck.AddCard(aux);
+            }
+
+
         }
 
         public void FirstHand()
